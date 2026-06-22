@@ -1,0 +1,58 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+
+# AWS credentials
+.aws/
+credentials
+*.pem
+*.key
+
+# Kubernetes
+kubeconfig
+.kube/
+*.secret.yaml
+secrets.yaml
+
+# Helm
+charts/*/charts/
+
+# Ansible
+*.retry
+vault-password.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Build artifacts
+dist/
+build/
