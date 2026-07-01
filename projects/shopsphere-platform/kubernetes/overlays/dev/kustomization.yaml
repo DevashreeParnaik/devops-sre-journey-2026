@@ -2,6 +2,26 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 namespace: shopsphere-dev
-
 resources:
   - ../../base
+  - namespace.yaml
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: StatefulSet
+      name: postgres
+    path: patches/postgres-replica.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: StatefulSet
+      name: postgres
+    path: patches/postgres-resources.yaml
+  - target:
+      group: apps
+      version: v1
+      kind: StatefulSet
+      name: minio
+    path: patches/minio-resources.yaml
