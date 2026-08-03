@@ -1,33 +1,39 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="ShopSphere API"
 )
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
-    #allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@app.get("/health")
+api_router = APIRouter(prefix="/api")
+
+
+@api_router.get("/health")
 def health():
     return {
         "status": "UP"
     }
 
 
-@app.get("/products")
+@api_router.get("/products")
 def products():
     return [
         {
-            "id":1,
-            "name":"Laptop"
+            "id": 1,
+            "name": "Laptop"
         },
         {
-            "id":2,
-            "name":"Phone"
+            "id": 2,
+            "name": "Phone"
         }
     ]
+
+
+app.include_router(api_router)
